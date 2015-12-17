@@ -1,9 +1,11 @@
 FROM centos:centos6
 RUN yum update -y
 RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
+RUN yum update -y
 RUN yum install wget python-devel python-pip python-zope-interface python-crypto pyOpenSSL zope -y
 RUN yum groupinstall "Development Tools" -y
-RUN yum install httpd php php-common php-gd php-pear php-xml supervisor -y
+RUN yum install httpd php56w php56w-common php56w-gd php56w-pear php56w-xml supervisor -y
 RUN yum install tar bzip2 -y
 COPY monast-3.0b4.tar.gz /usr/src/ 
 COPY starpy-1.0.0a13.tar.gz /usr/src/
